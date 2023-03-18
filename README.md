@@ -10,6 +10,9 @@
 * Access the site in your browser through the `APP_URL` (http://flarum-dev.lan:8082).
 * Hack away!
 
+> **Warning**
+> Deleting the generated `config.php` file after the first run will reset the database and all data will be lost. If you mistakely delete the file, just copy it back from the `.config.php` file.
+
 ## Environment
 
 ### General
