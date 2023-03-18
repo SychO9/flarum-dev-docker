@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "Already installed, Starting Flarum..."

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+echo "Installing Flarum..."
+
+# Prepare installation inputs
+cat <<EOF > install.yml
+debug: true
+baseUrl: ${APP_URL}
+databaseConfiguration:
+  driver: ${DB_CONNECTION}
+  host: ${DB_HOST}
+  port: ${DB_PORT}
+  database: ${DB_DATABASE}
+  username: ${DB_USERNAME}
+  password: ${DB_PASSWORD}
+adminUser:
+  username: ${ADMIN_USERNAME}
+  email: ${ADMIN_EMAIL}
+  password: ${ADMIN_PASSWORD}
+settings:
+  forum_title: ${APP_NAME}
+EOF
+
+# Setup the workbench
+studio load ../workbench/*
+
+# Setup the local framework development repository if it exists
+if [ -d "../framework" ]; then
+    # then load it
+    studio load ../framework/*/*
+fi
+
+# Download dependencies
+composer install --optimize-autoloader --no-interaction --no-progress
+
+# Install
+php flarum install -f install.yml
+
+# Cleanup
+rm install.yml
+
+# Replace config.php with .config.php to always use the environment variables
+cp .config.php config.php

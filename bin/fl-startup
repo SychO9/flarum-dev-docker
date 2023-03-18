@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e  # exit immediately if a command exits with a non-zero status
+
+# File permissions
+chown -R $USER:$USER $WORKING_DIR
+chmod -R g+w $WORKING_DIR
+
+# Install Flarum if not already installed
+# by checking for the existence of config.php
+if [ ! -f config.php ]; then
+  fl-install
+else
+  fl-run
+fi
+
+# PHP-FPM
+exec "$@"
