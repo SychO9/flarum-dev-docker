@@ -1,6 +1,6 @@
 ## Usage
 
-* Create a new project with `composer create-project sycho/flarum-dev-docker my-app`.
+* Create a new project with `git clone git@github.com:SychO9/flarum-dev-container.git flarum-dev-name`.
 * Customize the environment variables in the `.env` file.
 * Clone any extension you wish to develop into the `workbench` directory.
 * Clone the `flarum/framework` repository into the root directory if you wish to develop Flarum itself.
