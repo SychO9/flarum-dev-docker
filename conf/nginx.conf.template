@@ -1,7 +1,7 @@
 server {
     listen 80;
 
-    server_name flarum-dev.lan;
+    server_name ${SERVER_NAME};
 
     root /var/www/html/public;
 
