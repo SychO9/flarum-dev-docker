@@ -4,7 +4,7 @@ services:
 
   # Webserver
   webserver:
-    container_name: webserver
+    container_name: ${PROJECT_ID}-webserver
     image: nginx:latest
     restart: unless-stopped
     tty: true
@@ -20,7 +20,7 @@ services:
 
   # Flarum
   app:
-    container_name: app
+    container_name: ${PROJECT_ID}-app
     image: flarumdev:latest
     build:
       context: .
@@ -45,7 +45,7 @@ services:
 
   # Database
   db:
-    container_name: db
+    container_name: ${PROJECT_ID}-db
     platform: linux/x86_64
     image: ${DB_ENGINE_IMAGE}
     ports:
