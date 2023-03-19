@@ -7,7 +7,7 @@ cat <<EOF > install.yml
 debug: true
 baseUrl: ${APP_URL}
 databaseConfiguration:
-  driver: ${DB_CONNECTION}
+  driver: ${DB_DRIVER}
   host: ${DB_HOST}
   port: ${DB_PORT}
   database: ${DB_DATABASE}

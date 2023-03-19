@@ -47,7 +47,7 @@ services:
   db:
     container_name: db
     platform: linux/x86_64
-    image: mysql:8.0
+    image: ${DB_ENGINE_IMAGE}
     ports:
       - "${DB_PORT}:${DB_PORT}"
     expose:

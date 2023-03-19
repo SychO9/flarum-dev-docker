@@ -2,7 +2,7 @@
   'debug' => env('APP_DEBUG', false),
   'database' =>
   array (
-    'driver' => env('DB_CONNECTION'),
+    'driver' => env('DB_DRIVER'),
     'host' => env('DB_HOST'),
     'port' => env('DB_PORT'),
     'database' => env('DB_DATABASE'),
