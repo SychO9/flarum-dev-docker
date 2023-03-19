@@ -19,6 +19,7 @@ adminUser:
   password: ${ADMIN_PASSWORD}
 settings:
   forum_title: ${APP_NAME}
+  mail_driver: ${MAIL_DRIVER}
 EOF
 
 # Setup the workbench
