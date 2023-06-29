@@ -3,7 +3,7 @@
 * Create a new project with `git clone git@github.com:SychO9/flarum-dev-docker.git flarum-dev-name`.
 * Customize the environment variables in the `.env` file.
 * Clone any extension you wish to develop into the `workbench` directory.
-* Clone the `flarum/framework` repository into the root directory if you wish to develop Flarum itself.
+* Clone the `flarum/framework` repository into the root directory if you wish to develop Flarum itself. (You'll have to delete the placeholder `framework` directory first).
 * Build the containers with `docker-compose build`.
 * Run the containers with `docker-compose up -d`.
 * Add a virtual host to your local machine that points to the configured `APP_URL` in the `.env` file.

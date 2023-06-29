@@ -43,9 +43,7 @@ RUN composer global config --no-plugins allow-plugins.franzl/studio true && \
 # Copy Flarum skeleton to $WORKING_DIR and workbench
 COPY --chown=$USERNAME:$USERNAME flarum $WORKING_DIR
 COPY --chown=$USERNAME:$USERNAME workbench $WORKING_DIR/../workbench
-RUN if [ -d "$WORKING_DIR/../framework" ]; then \
-      COPY --chown=$USERNAME:$USERNAME framework $WORKING_DIR/../framework; \
-    fi
+COPY --chown=$USERNAME:$USERNAME framework $WORKING_DIR/../framework
 
 # Remove vendor if it exists
 RUN if [ -d "$WORKING_DIR/vendor" ]; then rm -rf $WORKING_DIR/vendor; fi
