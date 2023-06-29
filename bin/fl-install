@@ -31,6 +31,9 @@ if [ -d "../framework" ]; then
     studio load "../framework/framework/*"
     studio load "../framework/extensions/*"
     studio load "../framework/php-packages/*"
+
+    # Set minimum-stability to dev
+    composer config minimum-stability dev
 fi
 
 # Download dependencies
