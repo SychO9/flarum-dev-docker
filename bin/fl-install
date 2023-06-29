@@ -23,12 +23,14 @@ settings:
 EOF
 
 # Setup the workbench
-studio load ../workbench/*
+studio load "../workbench/*"
 
 # Setup the local framework development repository if it exists
 if [ -d "../framework" ]; then
     # then load it
-    studio load ../framework/*/*
+    studio load "../framework/framework/*"
+    studio load "../framework/extensions/*"
+    studio load "../framework/php-packages/*"
 fi
 
 # Download dependencies
