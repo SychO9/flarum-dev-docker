@@ -40,6 +40,7 @@ services:
       - ./conf/php.ini:/usr/local/etc/php/php.ini:ro
       - ./flarum:/var/www/html:cached
       - ./workbench:/var/www/workbench:cached
+      - ./framework:/var/www/framework:cached
     links:
       - db
     depends_on:
