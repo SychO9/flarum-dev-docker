@@ -2,6 +2,9 @@
 
 echo "Installing Flarum..."
 
+# Trap errors
+trap 'echo "An error occurred. Exiting..." && rollback && exit 1' ERR
+
 # Prepare installation inputs
 cat <<EOF > install.yml
 debug: true
@@ -34,6 +37,8 @@ if [ -d "../framework" ]; then
 
     # Set minimum-stability to dev
     composer config minimum-stability dev
+    # Set prefer-stable to true
+    composer config prefer-stable true
 fi
 
 # Download dependencies
@@ -47,3 +52,28 @@ rm install.yml
 
 # Replace config.php with .config.php to always use the environment variables
 cp .config.php config.php
+
+# Undo trap
+trap - ERR
+
+echo "Flarum installed successfully!"
+
+# A function to revert all changes made by this script
+function rollback() {
+  # Move the config.php back
+  mv config.php .config.php
+
+  # Undo composer install
+  rm -rf vendor
+  rm composer.lock
+
+  # Undo the workbench
+  studio unload "../workbench/*"
+
+  # Undo the framework
+  if [ -d "../framework" ]; then
+    studio unload "../framework/framework/*"
+    studio unload "../framework/extensions/*"
+    studio unload "../framework/php-packages/*"
+  fi
+}
