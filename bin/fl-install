@@ -29,17 +29,18 @@ EOF
 studio load "../workbench/*"
 
 # Setup the local framework development repository if there is a composer.json file inside framework
-if [ -f "../framework/composer.json" ]; then
+if [ -d "../framework" && -f "../framework/composer.json" ]; then
     # then load it
     studio load "../framework/framework/*"
     studio load "../framework/extensions/*"
     studio load "../framework/php-packages/*"
-
-    # Set minimum-stability to dev
-    composer config minimum-stability dev
-    # Set prefer-stable to true
-    composer config prefer-stable true
 fi
+
+# Set minimum-stability to dev
+composer config minimum-stability dev
+
+# Set prefer-stable to true
+composer config prefer-stable true
 
 # Download dependencies
 composer install --optimize-autoloader --no-interaction --no-progress
