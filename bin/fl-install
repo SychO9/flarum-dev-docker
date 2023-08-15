@@ -28,8 +28,8 @@ EOF
 # Setup the workbench
 studio load "../workbench/*"
 
-# Setup the local framework development repository if it exists
-if [ -d "../framework" ]; then
+# Setup the local framework development repository if there is a composer.json file inside framework
+if [ -f "../framework/composer.json" ]; then
     # then load it
     studio load "../framework/framework/*"
     studio load "../framework/extensions/*"
