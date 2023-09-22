@@ -15,7 +15,7 @@ RUN apt-get update && \
     # Additional php extensions
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd && \
-    docker-php-ext-install gd pdo_mysql zip && \
+    docker-php-ext-install gd pdo_mysql zip exif pgsql pdo_pgsql intl && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Node.js 16.x
