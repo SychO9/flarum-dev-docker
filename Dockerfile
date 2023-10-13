@@ -10,7 +10,7 @@ ENV HOST_GID=1000
 # Install necessary packages
 RUN apt-get update && \
     apt-get install -y  \
-      curl git software-properties-common zip unzip nano \
+      curl git software-properties-common zip unzip \
       zlib1g-dev libzip-dev libreadline-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libonig-dev && \
     # Additional php extensions
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
