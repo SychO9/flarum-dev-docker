@@ -11,11 +11,13 @@ ENV HOST_GID=1000
 RUN apt-get update && \
     apt-get install -y  \
       curl git software-properties-common zip unzip \
-      zlib1g-dev libzip-dev libreadline-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libonig-dev && \
+      zlib1g-dev libzip-dev libreadline-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libonig-dev libpq-dev && \
     # Additional php extensions
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd && \
-    docker-php-ext-install gd pdo_mysql zip exif pgsql pdo_pgsql && \
+    docker-php-ext-install gd pdo_mysql zip exif && \
+    docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
+    docker-php-ext-install pgsql pdo_pgsql && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Node.js 16.x
